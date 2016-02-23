@@ -23,7 +23,7 @@ Here, we store data on the host system under `/my_dir/phpipam` and use a specifi
 ### Phpipam 
 
 ```bash
-$ docker run -ti -d -p 80:80 --name ipam --link phpipam-mysql:mysql pierrecdn/phpipam
+$ docker run -ti -d -p 80:80 --name ipam --link phpipam-mysql:mysql michaelholttech/phpipam
 ```
 
 We are linking the two containers and expose the HTTP port. 
@@ -62,7 +62,7 @@ You can create an all-in-one YAML deployment descriptor with Docker compose, lik
 
 ```yaml
 ipam:
-  image: pierrecdn/phpipam
+  image: michaelholttech/phpipam
   ports:
    - "80:80"
   links:
