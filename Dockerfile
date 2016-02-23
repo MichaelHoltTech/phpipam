@@ -6,7 +6,7 @@ ENV PHPIPAM_VERSION 1.16.003
 
 # Install required deb packages
 RUN apt-get update && \ 
-	apt-get install -y git php-pear php5-curl php5-mysql php5-json php5-gmp php5-mcrypt php5-ldap libgmp-dev libmcrypt-dev && \
+	apt-get install -y git php-pear php5-curl php5-mysql php5-json php5-gmp php5-mcrypt php5-ldap libgmp-dev libmcrypt-dev libldap2-dev && \
 	rm -rf /var/lib/apt/lists/*
 
 # Configure apache and required PHP modules 
@@ -16,6 +16,8 @@ RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd && \
 	docker-php-ext-install gettext && \ 
 	ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h && \
 	docker-php-ext-configure gmp --with-gmp=/usr/include/x86_64-linux-gnu && \
+	docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu && \
+	docker-php-ext-install ldap && \
 	docker-php-ext-install gmp && \
     docker-php-ext-install mcrypt && \
 	echo ". /etc/environment" >> /etc/apache2/envvars && \
