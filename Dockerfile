@@ -2,7 +2,7 @@ FROM php:5.6-apache
 MAINTAINER Pierre Cheynier <pierre.cheynier@sfr.com>
 
 ENV PHPIPAM_SOURCE https://github.com/phpipam/phpipam/archive/
-ENV PHPIPAM_VERSION 1.16.003
+ENV PHPIPAM_VERSION 1.2
 
 # Install required deb packages
 RUN apt-get update && \ 
